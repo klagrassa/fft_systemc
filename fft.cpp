@@ -23,7 +23,7 @@ void but(complex_t *weight,
 }
 
 	
-void fft(complex_t in[8], complex_t out[8]) 
+void fft(complex_t in[8], complex_t out[8])
 {
 	complex_t stage1[8], stage2[8];
 

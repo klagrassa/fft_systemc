@@ -35,7 +35,7 @@ int sc_main(int ac, char** argv)
     fft_in.trace(tf);
     fft_out.trace(tf);
 
-    sc_start(500, SC_NS);
+    sc_start(1000, SC_NS);
     sc_close_vcd_trace_file(tf);
     return 0;
 }

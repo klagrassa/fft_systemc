@@ -2,6 +2,9 @@
 #define __FFT8_H
 
 #include "systemc.h"
+#include "fft.h"
+
+#define POINTS_NUMBER 8
 
 SC_MODULE(FFT8)
 {
@@ -18,6 +21,11 @@ SC_MODULE(FFT8)
 
     private:
     void    COMPORTEMENT();
+
+    private:
+    complex_t complex_in[POINTS_NUMBER], complex_out[POINTS_NUMBER];
+    // Flag pour compter le nombre d'itérations à faire avant de faire le traitement
+    int count = 0;
 
 };
 

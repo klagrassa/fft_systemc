@@ -4,8 +4,7 @@ SRC = $(wildcard *.cpp)
 OBJ= $(SRC:.cpp=.o)
 HEA= $(SRC:.cpp=.h)
 
-# SRCDIR=modules/sources
-# INCDIR=modules/includes
+# SRCDIR=modules/*
 # OBJDIR=build
 
 # SRC = $(wildcard $(SRCDIR)/*.c)
@@ -14,9 +13,9 @@ HEA= $(SRC:.cpp=.h)
 
 CC=g++
 
-SYSTEMC=/usr/local/systemc-2.3.2
+SYSTEMC=/usr/local/systemc-2.3.3
 
-LDFLAGS= -L$(SYSTEMC)/lib -Wl,-rpath=$(SYSTEMC)/lib -lm -lsystemc
+LDFLAGS= -L$(SYSTEMC)/lib-linux64 -Wl,-rpath=$(SYSTEMC)/lib-linux64 -lm -lsystemc
 CXXFLAGS= -W -Wall -pedantic -g -I$(SYSTEMC)/include -DDEBUG_SYSTEMC
 
 

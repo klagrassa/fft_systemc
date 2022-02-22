@@ -5,7 +5,6 @@
 void SINK::COMPORTEMENT()
 {
     std::ofstream output("output_samples.txt");
-
     float val;
 
     // Vérification du flux de sortie prêt
@@ -22,7 +21,7 @@ void SINK::COMPORTEMENT()
             wait();
         }
         else {
-            std::cout << "Fin d'écriture" << std::endl;
+            //std::cout << "Fin d'écriture" << std::endl;
             wait();
         }
     }
