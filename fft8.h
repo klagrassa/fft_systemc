@@ -10,8 +10,16 @@ SC_MODULE(FFT8)
 {
     public:
     sc_in_clk   clk;
-    sc_fifo_in<float>   in;
+    //sc_fifo_in<float>   in;
     sc_fifo_out<float>  out;
+
+    // Lignes de données
+    sc_in<double> real;
+    sc_in<double> imag;
+    
+    // Handshake protocol
+    sc_out<bool> data_req;
+    sc_in<bool> data_valid;
 
     SC_CTOR(FFT8)
     {
