@@ -3,7 +3,7 @@
 #include "sink.h"
 #include "fft8.h"
 
-int sc_main(int ac, char** argv)
+int sc_main(int ac, char **argv)
 {
     sc_trace_file *tf;
 
@@ -12,17 +12,21 @@ int sc_main(int ac, char** argv)
     FFT8 fft1("FFT8");
     SINK sink1("Sink");
 
-    sc_clock clk ("ID", 10, SC_NS, 0.5, 10, SC_NS, true);
+    sc_clock clk("ID", 10, SC_NS, 0.5, 10, SC_NS, true);
     // sc_fifo<float> fft_in;
-    sc_fifo<float> fft_out;
+    // sc_fifo<float> fft_out;
 
     // Signaux de contrôle
     sc_signal<bool> data_valid;
     sc_signal<bool> data_req;
+    sc_signal<bool> data_req_sink;
+    sc_signal<bool> data_valid_sink;
 
     // Signaux de données
     sc_signal<double> real;
     sc_signal<double> imag;
+    sc_signal<double> real_out;
+    sc_signal<double> imag_out;
 
     // Port mapping
     source1.clk(clk);
@@ -33,12 +37,20 @@ int sc_main(int ac, char** argv)
 
     fft1.real(real);
     fft1.imag(imag);
-    fft1.out(fft_out);
+    fft1.real_out(real_out);
+    fft1.imag_out(imag_out);
+    // fft1.out(fft_out);
     fft1.clk(clk);
     fft1.data_valid(data_valid);
     fft1.data_req(data_req);
-    
-    sink1.in(fft_out);
+    fft1.data_valid_sink(data_valid_sink);
+    fft1.data_req_sink(data_req_sink);
+
+    // sink1.in(fft_out);
+    sink1.data_req(data_req_sink);
+    sink1.data_valid(data_valid_sink);
+    sink1.real(real_out);
+    sink1.imag(imag_out);
     sink1.clk(clk);
 
     // Waves:
@@ -47,11 +59,15 @@ int sc_main(int ac, char** argv)
     sc_trace(tf, clk, "clk");
     sc_trace(tf, data_valid, "data_valid");
     sc_trace(tf, data_req, "data_req");
+    sc_trace(tf, data_valid_sink, "data_valid_sink");
+    sc_trace(tf, data_req_sink, "data_req_sink");
     sc_trace(tf, real, "source1_FFT");
     sc_trace(tf, imag, "source1_img_FFT");
+    sc_trace(tf, real_out, "source1_sink_FFT");
+    sc_trace(tf, imag_out, "source1_img_sink_FFT");
     // Useful waves
-    //fft_in.trace(tf);
-    fft_out.trace(tf);
+    // fft_in.trace(tf);
+    //fft_out.trace(tf);
 
     sc_start(1000, SC_NS);
     sc_close_vcd_trace_file(tf);

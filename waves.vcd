@@ -1,5 +1,5 @@
 $date
-     Feb 22, 2022       16:21:05
+     Mar 15, 2022       11:30:12
 $end
 
 $version
@@ -14,24 +14,12 @@ $scope module SystemC $end
 $var wire    1  aaaaa  clk       $end
 $var wire    1  aaaab  data_valid       $end
 $var wire    1  aaaac  data_req       $end
-$var real    1  aaaad  source1_FFT       $end
-$var real    1  aaaae  source1_img_FFT       $end
-$var real    1  aaaaf  fifo_0_0       $end
-$var real    1  aaaag  fifo_0_1       $end
-$var real    1  aaaah  fifo_0_2       $end
-$var real    1  aaaai  fifo_0_3       $end
-$var real    1  aaaaj  fifo_0_4       $end
-$var real    1  aaaak  fifo_0_5       $end
-$var real    1  aaaal  fifo_0_6       $end
-$var real    1  aaaam  fifo_0_7       $end
-$var real    1  aaaan  fifo_0_8       $end
-$var real    1  aaaao  fifo_0_9       $end
-$var real    1  aaaap  fifo_0_10       $end
-$var real    1  aaaaq  fifo_0_11       $end
-$var real    1  aaaar  fifo_0_12       $end
-$var real    1  aaaas  fifo_0_13       $end
-$var real    1  aaaat  fifo_0_14       $end
-$var real    1  aaaau  fifo_0_15       $end
+$var wire    1  aaaad  data_valid_sink       $end
+$var wire    1  aaaae  data_req_sink       $end
+$var real    1  aaaaf  source1_FFT       $end
+$var real    1  aaaag  source1_img_FFT       $end
+$var real    1  aaaah  source1_sink_FFT       $end
+$var real    1  aaaai  source1_img_sink_FFT       $end
 $upscope $end
 $enddefinitions  $end
 
@@ -43,29 +31,18 @@ $dumpvars
 0aaaaa
 0aaaab
 0aaaac
-r0 aaaad
-r0 aaaae
+0aaaad
+0aaaae
 r0 aaaaf
 r0 aaaag
 r0 aaaah
 r0 aaaai
-r3.559244355763391e-17 aaaaj
-r1.832023514993055e+25 aaaak
-r6.593495034451775e+22 aaaal
-r7.555081327053433e+31 aaaam
-r0 aaaan
-r0 aaaao
-r0 aaaap
-r0 aaaaq
-r0 aaaar
-r0 aaaas
-r0 aaaat
-r0 aaaau
 $end
 
 #10
 1aaaaa
 1aaaac
+1aaaae
 
 #15
 0aaaaa
@@ -73,8 +50,8 @@ $end
 #20
 1aaaaa
 1aaaab
-r2011 aaaad
-r2011 aaaae
+r2011 aaaaf
+r2011 aaaag
 
 #25
 0aaaaa
@@ -124,8 +101,8 @@ r2011 aaaae
 #100
 1aaaaa
 0aaaac
-r1 aaaad
-r1 aaaae
+r1 aaaaf
+r1 aaaag
 
 #105
 0aaaaa
@@ -133,18 +110,19 @@ r1 aaaae
 #110
 1aaaaa
 1aaaac
-r0 aaaaj
-r0 aaaak
-r0 aaaal
-r0 aaaam
+1aaaad
+r16088 aaaah
+r16088 aaaai
 
 #115
 0aaaaa
 
 #120
 1aaaaa
-r0 aaaad
-r0 aaaae
+r0 aaaaf
+r0 aaaag
+r0 aaaah
+r0 aaaai
 
 #125
 0aaaaa
@@ -188,7 +166,8 @@ r0 aaaae
 #190
 1aaaaa
 0aaaac
-r456 aaaae
+0aaaad
+r456 aaaag
 
 #195
 0aaaaa
@@ -196,62 +175,65 @@ r456 aaaae
 #200
 1aaaaa
 1aaaac
+1aaaad
+r1 aaaah
+r1 aaaai
 
 #205
 0aaaaa
 
 #210
 1aaaaa
-r120 aaaad
-r234 aaaae
+r120 aaaaf
+r234 aaaag
 
 #215
 0aaaaa
 
 #220
 1aaaaa
-r234 aaaad
-r120 aaaae
+r234 aaaaf
+r120 aaaag
 
 #225
 0aaaaa
 
 #230
 1aaaaa
-r120 aaaad
-r0 aaaae
+r120 aaaaf
+r0 aaaag
 
 #235
 0aaaaa
 
 #240
 1aaaaa
-r0 aaaad
-r-120 aaaae
+r0 aaaaf
+r-120 aaaag
 
 #245
 0aaaaa
 
 #250
 1aaaaa
-r-120 aaaad
-r-234 aaaae
+r-120 aaaaf
+r-234 aaaag
 
 #255
 0aaaaa
 
 #260
 1aaaaa
-r-234 aaaad
-r-456 aaaae
+r-234 aaaaf
+r-456 aaaag
 
 #265
 0aaaaa
 
 #270
 1aaaaa
-r-120 aaaad
-r-768 aaaae
+r-120 aaaaf
+r-768 aaaag
 
 #275
 0aaaaa
@@ -259,8 +241,9 @@ r-768 aaaae
 #280
 1aaaaa
 0aaaac
-r123 aaaad
-r29 aaaae
+0aaaad
+r123 aaaaf
+r29 aaaag
 
 #285
 0aaaaa
@@ -268,62 +251,79 @@ r29 aaaae
 #290
 1aaaaa
 1aaaac
+1aaaad
+r0 aaaah
+r-768 aaaai
 
 #295
 0aaaaa
 
 #300
 1aaaaa
-r34 aaaad
-r34 aaaae
+r34 aaaaf
+r34 aaaag
+r1449.9839815632 aaaah
+r-443.543289336 aaaai
 
 #305
 0aaaaa
 
 #310
 1aaaaa
-r-23 aaaad
-r85 aaaae
+r-23 aaaaf
+r85 aaaag
+r768 aaaah
+r672 aaaai
 
 #315
 0aaaaa
 
 #320
 1aaaaa
-r12 aaaad
-r206 aaaae
+r12 aaaaf
+r206 aaaag
+r297.9839815632 aaaah
+r916.720779384 aaaai
 
 #325
 0aaaaa
 
 #330
 1aaaaa
-r45 aaaad
-r336 aaaae
+r45 aaaaf
+r336 aaaag
+r0 aaaah
+r768 aaaai
 
 #335
 0aaaaa
 
 #340
 1aaaaa
-r0 aaaad
-r593 aaaae
+r0 aaaaf
+r593 aaaag
+r-297.9839815632001 aaaah
+r659.543289336 aaaai
 
 #345
 0aaaaa
 
 #350
 1aaaaa
-r67 aaaad
-r823 aaaae
+r67 aaaaf
+r823 aaaag
+r-768 aaaah
+r672 aaaai
 
 #355
 0aaaaa
 
 #360
 1aaaaa
-r134 aaaad
-r422 aaaae
+r134 aaaaf
+r422 aaaag
+r-1449.9839815632 aaaah
+r1171.279220616 aaaai
 
 #365
 0aaaaa
@@ -332,6 +332,7 @@ r422 aaaae
 1aaaaa
 0aaaab
 0aaaac
+0aaaad
 
 #375
 0aaaaa
@@ -339,54 +340,72 @@ r422 aaaae
 #380
 1aaaaa
 1aaaac
+1aaaad
+r392 aaaah
+r2528 aaaai
 
 #385
 0aaaaa
 
 #390
 1aaaaa
+r-1097.6990975628 aaaah
+r-397.312229206 aaaai
 
 #395
 0aaaaa
 
 #400
 1aaaaa
+r123 aaaah
+r-431 aaaai
 
 #405
 0aaaaa
 
 #410
 1aaaaa
+r157.6835867028 aaaah
+r-92.23697730280003 aaaai
 
 #415
 0aaaaa
 
 #420
 1aaaaa
+r32 aaaah
+r18 aaaai
 
 #425
 0aaaaa
 
 #430
 1aaaaa
+r-222.3009024372 aaaah
+r-36.68777079399999 aaaai
 
 #435
 0aaaaa
 
 #440
 1aaaaa
+r125 aaaah
+r-655 aaaai
 
 #445
 0aaaaa
 
 #450
 1aaaaa
+r1474.3164132972 aaaah
+r-701.7630226972 aaaai
 
 #455
 0aaaaa
 
 #460
 1aaaaa
+0aaaad
 
 #465
 0aaaaa

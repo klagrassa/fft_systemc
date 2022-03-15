@@ -1,29 +1,33 @@
 #include "sink.h"
 #include <iostream>
 
-
 void SINK::COMPORTEMENT()
 {
     std::ofstream output("output_samples.txt");
-    float val;
 
     // Vérification du flux de sortie prêt
-    if(!output)
+    if (!output)
         std::cout << "Fichier non ouvert" << std::endl;
+
+    // Initialisation
+    data_req = false;
+    wait();
+
+    data_req = true;
 
     // Tant qu'il y a une donnée à écrire, on l'inscrit dans le flux
     // Boucle while pour le thread
     while (true)
     {
-        if (in.num_available() > 1)
+        if (data_valid)
         {
-            output << in.read() << " " << in.read() << std::endl;
+            output << real.read() << " " << imag.read() << std::endl;
             wait();
         }
-        else {
-            //std::cout << "Fin d'écriture" << std::endl;
+        else
+        {
+            // std::cout << "Fin d'écriture" << std::endl;
             wait();
         }
     }
-
 }

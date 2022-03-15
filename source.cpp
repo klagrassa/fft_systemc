@@ -33,12 +33,13 @@ void SOURCE::COMPORTEMENT()
       // La data est prête à être envoyé
       if (data_req)
       {
-        data_valid.write(true);
+        data_valid = true;
+        
         input >> tmp_val;
         real.write(tmp_val);
         input >> tmp_val;
         imag.write(tmp_val);
-        cerr << "val " << real << " " << imag << endl;
+        //cerr << "val " << real << " " << imag << endl;
       }
       
     }
